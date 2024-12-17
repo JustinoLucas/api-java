@@ -19,6 +19,7 @@ public class ProdutoMangaController {
     @Autowired  // Instanciar injetando todas as dependencias menos burocraticas
     ProdutoMangaRepository repository;
 
+    //    @CrossOrigin(origins = "*", allowedHeaders = "*") Ou colocar em cada map ao inves do web config
     @GetMapping // Do tipo GET
     public ResponseEntity getAll() {
         List<ProdutoManga> listamangas = repository.findAll();
@@ -27,7 +28,7 @@ public class ProdutoMangaController {
 
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable(value = "id") Integer id){
-        Optional produtomanga = repository.findById(id);
+        Optional<ProdutoManga> produtomanga = repository.findById(id);
         if (produtomanga.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Manga não encontrado");
         } return ResponseEntity.status(HttpStatus.FOUND).body(produtomanga.get());
