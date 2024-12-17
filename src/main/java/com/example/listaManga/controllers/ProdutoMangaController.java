@@ -42,7 +42,6 @@ public class ProdutoMangaController {
 
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Integer id){
         Optional<ProdutoManga> produtomanga = repository.findById(id);
