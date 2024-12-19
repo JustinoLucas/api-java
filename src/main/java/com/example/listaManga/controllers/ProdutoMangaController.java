@@ -19,13 +19,14 @@ public class ProdutoMangaController {
     @Autowired  // Instanciar injetando todas as dependencias menos burocraticas
     ProdutoMangaRepository repository;
 
-    //    @CrossOrigin(origins = "*", allowedHeaders = "*") Ou colocar em cada map ao inves do web config
+    @CrossOrigin(origins = "http://localhost:5173")  // Permite requisições do seu frontend
     @GetMapping // Do tipo GET
     public ResponseEntity getAll() {
         List<ProdutoManga> listamangas = repository.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(listamangas);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")  // Permite requisições do seu frontend
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable(value = "id") Integer id){
         Optional<ProdutoManga> produtomanga = repository.findById(id);
@@ -34,6 +35,7 @@ public class ProdutoMangaController {
         } return ResponseEntity.status(HttpStatus.FOUND).body(produtomanga.get());
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")  // Permite requisições do seu frontend
     @PostMapping // Do tipo POST
     public ResponseEntity save(@RequestBody ProdutoDto dto) {
         var produtomanga = new ProdutoManga();
@@ -42,6 +44,7 @@ public class ProdutoMangaController {
 
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")  // Permite requisições do seu frontend
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Integer id){
         Optional<ProdutoManga> produtomanga = repository.findById(id);
@@ -52,6 +55,7 @@ public class ProdutoMangaController {
         return ResponseEntity.status(HttpStatus.OK).body("Manga Deletado");
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")  // Permite requisições do seu frontend
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable(value = "id") Integer id, @RequestBody ProdutoDto dto){
         Optional<ProdutoManga> produtomanga = repository.findById(id);
