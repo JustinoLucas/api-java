@@ -43,7 +43,7 @@ CREATE TABLE listamanga (
     autor_manga VARCHAR(255),
     nome_alternativo VARCHAR(255),
     tipo_manga VARCHAR(255),
-    estudio VARCHAR(255);
+    estudio VARCHAR(255)
 );
 ```
 
